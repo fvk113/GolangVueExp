@@ -1,0 +1,5 @@
+package dominio
+
+func main() {
+
+}
