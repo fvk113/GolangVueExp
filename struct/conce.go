@@ -1,5 +1,1 @@
 package dominio
-
-func main() {
-
-}
