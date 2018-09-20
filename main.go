@@ -1,10 +1,10 @@
 package main
 
 import (
+	"awesomeProject/handlers"
 	"fmt"
 	"github.com/jinzhu/gorm"
-	_ "github.com/lib/pq"
-	"time"
+	"github.com/labstack/echo"
 )
 
 func main() {
@@ -12,30 +12,17 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-
 	err = db.DB().Ping()
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println("Conexión exitosa")
-	db.SingularTable(true)
-	var acc Account
-	db.AutoMigrate(Account{})
-	db.Debug().First(&acc)
-	fmt.Println(acc)
-	db.Close()
-}
 
-type Account struct {
-	ID         string
-	EMAIL      string
-	FIRST_NAME string
-	LAST_NAME  string
-	LOGIN      string
-	PASSWORD   string
-	ROLE_NAME  string
-	IS_ENABLED bool
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
-	DeletedAt  *time.Time `sql:"index"`
+	e := echo.New()
+	e.File("/", "public/index.html")
+	e.GET("/cuentas", handlers.GetAccounts(db))
+	e.PUT("/cuentas", handlers.DeleteTask(db))
+	e.DELETE("/cuentas/:id", handlers.PutTask(db))
+	// Start as a web server
+	e.Logger.Fatal(e.Start(":8000"))
+	fmt.Println("Servidor Iniciado")
 }
