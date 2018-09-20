@@ -5,13 +5,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
     <title>Cuentas App</title>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
+    <!-- //semantic -->
+   <link rel="stylesheet" href="/resources/semantic-ui/semantic.css">
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -27,10 +22,14 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Cuentas</h2>
-            <ul class="list-group">
-                <li class="list-group-item" v-for="cuenta in cuentas">
-                {{ cuenta.login }}
-                </li>
+            <ul class="ui list">
+                <div class="item"  v-for="cuenta in cuentas">
+                    <i class="red folder icon"></i>
+                    <div class="content">
+                        <div class="header">{{ cuenta.login }}</div>
+                        <div class="description">{{ cuenta.apellido}} {{cuenta.nombre}}</div>
+                    </div>
+                </div>
             </ul>
         </div>
     </div>
