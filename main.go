@@ -18,8 +18,8 @@ func main() {
 	}
 
 	e := echo.New()
-	e.File("/resources", "public/resources/")
-	e.File("/", "public/index.html")
+	e.Static("public/resources", "resources")
+	e.File("/home", "public/index.html")
 	e.GET("/cuentas", handlers.GetAccounts(db))
 	e.PUT("/cuentas", handlers.DeleteTask(db))
 	e.DELETE("/cuentas/:id", handlers.PutTask(db))

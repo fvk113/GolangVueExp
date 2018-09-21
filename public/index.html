@@ -6,7 +6,7 @@
 
     <title>Cuentas App</title>
     <!-- //semantic -->
-   <link rel="stylesheet" href="/resources/semantic-ui/semantic.css">
+   <link rel="stylesheet" href="resources/semantic-ui/semantic.css">
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -22,15 +22,26 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Cuentas</h2>
-            <ul class="ui list">
-                <div class="item"  v-for="cuenta in cuentas">
+                <div class="item" >
                     <i class="red folder icon"></i>
-                    <div class="content">
-                        <div class="header">{{ cuenta.login }}</div>
-                        <div class="description">{{ cuenta.apellido}} {{cuenta.nombre}}</div>
-                    </div>
+                    <table class="ui striped table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  v-for="cuenta in cuentas">
+                                <td>{{ cuenta.login }}</td>
+                                <td>{{ cuenta.firstName }}</td>
+                                <td>{{ cuenta.lastName }}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
                 </div>
-            </ul>
         </div>
     </div>
 </div>
@@ -47,7 +58,8 @@
         created: function() {
             // Use the vue-resource $http client to fetch data from the /tasks route
             this.$http.get('/cuentas').then(function(response) {
-                this.cuentas = response.data.items ? response.data.items : []
+                this.cuentas = response.data.items ? response.data.items : [] ;
+                console.info( this.cuentas[0]);
             })
         },
 
