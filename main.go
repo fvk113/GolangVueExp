@@ -1,10 +1,10 @@
 package main
 
 import (
-	"awesomeProject/handlers"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
+	"vuegootest/handlers"
 )
 
 func main() {

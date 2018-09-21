@@ -2,10 +2,10 @@
 package models
 
 import (
-	"awesomeProject/dominio"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
+	"vuegootest/dominio"
 )
 
 func GetCuentas(db *gorm.DB) dominio.AccountCollection {

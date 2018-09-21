@@ -2,11 +2,11 @@
 package handlers
 
 import (
-	"awesomeProject/models"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
 	"net/http"
 	"strconv"
+	"vuegootest/models"
 )
 
 // handlers/tasks.go
